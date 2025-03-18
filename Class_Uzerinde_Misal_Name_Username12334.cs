@@ -12,7 +12,10 @@
             human123.ShowFullData();
 
             User adam1 = new User("Mehemmed","Rehmenov","Mehemmed12345","salam1234");
+            adam1.Age = 101;
+            Console.WriteLine(adam1.Age);
             adam1.ShowUserInfo();
+
 
         }
     }
@@ -20,13 +23,31 @@
     {
         string name;
         string surname;
-        byte[] age;
+        sbyte age;
+
+
+        public sbyte Age { 
+            get {
+                return age;
+            }
+            set {
+                if (value >= 18 && value <= 100)
+                {
+                    age = value;
+                }
+                else
+                {
+                    Console.WriteLine("yas uygun gelmir");
+                }
+            } 
+        }
+
 
         public Human()
         {
             
         }
-        public Human(string name)
+        public Human(string name):this()
         {
             this.name = name;
         }
@@ -41,7 +62,6 @@
         }
         public string GetFullName()
         {
-
             return name + " " + surname;
         }
     }
